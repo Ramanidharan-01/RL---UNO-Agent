@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-uno-red: #E53935;
+    --color-uno-yellow: #FDD835;
+    --color-uno-green: #43A047;
+    --color-uno-blue: #1E88E5;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.surface.700') transparent;
+  }
+
+  body {
+    @apply bg-surface-950 text-surface-100 font-sans;
+    background-image: radial-gradient(ellipse at top, rgba(108, 99, 255, 0.06) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* ── Glassmorphism card ──────────────────────────────────────────────── */
+  .glass-card {
+    @apply bg-surface-800/60 backdrop-blur-md border border-surface-700/50 rounded-2xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+  .glass-card-hover:hover {
+    @apply bg-surface-800/80 border-surface-600/50 shadow-lg;
+    transform: translateY(-2px);
+  }
+
+  /* ── Gradient buttons ────────────────────────────────────────────────── */
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl font-semibold text-white
+           bg-gradient-to-r from-accent to-accent-dark
+           hover:from-accent-light hover:to-accent
+           transition-all duration-300 shadow-glow-accent
+           active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-xl font-semibold
+           bg-surface-700/80 text-surface-200
+           hover:bg-surface-600/80 hover:text-white
+           border border-surface-600/50
+           transition-all duration-300
+           active:scale-95;
+  }
+
+  .btn-danger {
+    @apply px-6 py-3 rounded-xl font-semibold text-white
+           bg-gradient-to-r from-danger to-red-600
+           hover:from-red-500 hover:to-red-600
+           transition-all duration-300
+           active:scale-95;
+  }
+
+  /* ── UNO card component ──────────────────────────────────────────────── */
+  .uno-card {
+    @apply relative w-20 h-28 rounded-xl shadow-card cursor-pointer
+           transition-all duration-200 select-none;
+    perspective: 1000px;
+  }
+
+  .uno-card:hover {
+    @apply shadow-card-hover;
+    transform: translateY(-8px) scale(1.05);
+  }
+
+  .uno-card-red { @apply bg-gradient-to-br from-uno-red to-red-700; }
+  .uno-card-yellow { @apply bg-gradient-to-br from-uno-yellow to-yellow-600 text-gray-900; }
+  .uno-card-green { @apply bg-gradient-to-br from-uno-green to-green-700; }
+  .uno-card-blue { @apply bg-gradient-to-br from-uno-blue to-blue-700; }
+  .uno-card-wild { @apply bg-gradient-to-br from-gray-800 to-gray-900; }
+
+  .uno-card-playable {
+    @apply ring-2 ring-accent ring-offset-2 ring-offset-surface-900
+           animate-pulse-glow;
+  }
+
+  /* ── Turn indicator ──────────────────────────────────────────────────── */
+  .turn-active {
+    @apply ring-2 ring-accent animate-pulse-glow rounded-full;
+  }
+
+  /* ── Skeleton loading ────────────────────────────────────────────────── */
+  .skeleton {
+    @apply bg-surface-700/50 rounded-lg animate-shimmer;
+    background-size: 200% 100%;
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255,255,255,0.04) 50%,
+      transparent 100%
+    );
+  }
+
+  /* ── Page container ──────────────────────────────────────────────────── */
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  }
+
+  /* ── Section heading ─────────────────────────────────────────────────── */
+  .section-title {
+    @apply text-2xl font-display font-bold text-white mb-6;
+  }
+
+  /* ── Input fields ────────────────────────────────────────────────────── */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl
+           bg-surface-800/80 border border-surface-600/50
+           text-surface-100 placeholder-surface-500
+           focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/50
+           transition-all duration-200;
+  }
+
+  /* ── Badge ───────────────────────────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-accent { @apply bg-accent/20 text-accent-light; }
+  .badge-success { @apply bg-success/20 text-green-400; }
+  .badge-warning { @apply bg-warning/20 text-yellow-400; }
+  .badge-danger { @apply bg-danger/20 text-red-400; }
+}

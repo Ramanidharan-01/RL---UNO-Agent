@@ -1,0 +1,32 @@
+# ── Web framework ──────────────────────────────────────────────────────────────
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+websockets>=12.0
+python-multipart>=0.0.9
+httpx>=0.27.0
+
+# ── Settings & validation ──────────────────────────────────────────────────────
+pydantic>=2.7.0
+pydantic-settings>=2.3.0
+
+# ── Redis ──────────────────────────────────────────────────────────────────────
+redis[asyncio]>=5.0.0
+
+# ── PostgreSQL (Phase 3) ───────────────────────────────────────────────────────
+asyncpg>=0.29.0
+sqlalchemy[asyncio]>=2.0.30
+alembic>=1.13.1
+
+# ── Auth (Phase 3) ─────────────────────────────────────────────────────────────
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+
+# ── JAX / ML stack ─────────────────────────────────────────────────────────────
+# Swap jax[cpu] for jax[cuda12] on GPU servers.
+jax[cpu]>=0.4.28
+flax>=0.8.4
+optax>=0.2.2
+numpy>=1.26.0
+
+# ── Serialization ──────────────────────────────────────────────────────────────
+msgpack>=1.0.8
